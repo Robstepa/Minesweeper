@@ -8,7 +8,6 @@ class App {
     char[][] table;
 
     public App(int width, int height, int mines) {
-
         this.height = height;
         this.width = width;
         this.mines = mines;
@@ -17,7 +16,6 @@ class App {
 
     public static void main(String[] args) {
         App app = new App(10, 10, 20);
-
         app.createMap();
         app.drawMap();
     }
