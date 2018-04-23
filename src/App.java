@@ -15,25 +15,15 @@ class App {
     }
 
     public static void main(String[] args) {
-        App app = new App(10, 10, 20);
+        App app = new App(5, 5, 5);
         app.createMap();
         app.drawMap();
     }
 
     public void createMap() {
-        for(int y = 0; y < height; y ++) {
-            for(int x = 0; x < width; x ++) {
-                table[y][x] = '.';
-            }
-        }
+        fillTable();
         placeMines();
-        for(int y = 0; y < height; y ++) {
-            for(int x = 0; x < width; x ++) {
-                if (table[y][x] == '.') {
-                    table[y][x]=minesNear(y, x);
-                }
-            }
-        }
+        findMines();
     }
 
     public void drawMap() {
@@ -42,6 +32,24 @@ class App {
                 System.out.print(table[y][x]);
             }
             System.out.print("\n");
+        }
+    }
+
+    private void fillTable(){
+        for(int y = 0; y < height; y ++) {
+            for(int x = 0; x < width; x ++) {
+                table[y][x] = '.';
+            }
+        }
+    }
+
+    private void findMines(){
+        for(int y = 0; y < height; y ++) {
+            for(int x = 0; x < width; x ++) {
+                if (table[y][x] == '.') {
+                    table[y][x]=minesNear(y, x);
+                }
+            }
         }
     }
 
